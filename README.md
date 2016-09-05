@@ -20,7 +20,7 @@ Just a note:
 
 ---
 
-## Install instructions
+## Install procedure
 
 Copy and paste this code into a new bookmark, or simply select the code and drag-drop it into your favorites bar.
 ```javascript
@@ -33,3 +33,10 @@ javascript: (function () { var jsCode = document.createElement('script'); jsCode
 If you liked this tool, please buy me a beer :)
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4UMTD8RPT6HDE)
+
+---
+
+| Plan with openrouteservice.org | Get it on your device |
+| --- | --- |
+| ![Plan with openrouteservice.org](http://www.newtechweb.it/apps/openbryton/screen-1.jpg "Plan with openrouteservice.org") | ![Get it on your device](http://www.newtechweb.it/apps/openbryton/screen-2.jpg "Get it on your device") |
+
