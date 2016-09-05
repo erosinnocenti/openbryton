@@ -1,13 +1,12 @@
 ## OpenBryton
 **OpenBryton** is a combination of a browser bookmarlet and a PHP server script for generating routes in Bryton Rider format.
-Currently OpenBryton is tested only with Bryton Rider R530, which is my GPS unit.
+Currently OpenBryton is being tested only against Bryton Rider R530, which is my GPS unit.
 
 I decided to build this software because the only way to create a route complete of turn-by-turn notifications is to use Bryton Mobile App (https://play.google.com/store/apps/details?id=com.brytonsport.barringer&hl=it)
+Unfortunately, in witch Bryton official App it's possible to plan trips specifying only two points: start and destination. No waypoints allowed.
 
-Unfortunately, in BMA (Bryton Mobile App) it's possible to plan trips specifying only two points: start and destination.
-
-With OpenBryton bookmarklet you can use the powerful OpenRouteService (http://openrouteservice.org) that lies on OpenStreetMaps database to create tracks.
-OpenRouteService allows you to specify more than two waypoints and also to calculate turn indications.
+With OpenBryton bookmarklet you can use the powerful OpenRouteService (http://openrouteservice.org) that lies on OpenStreetMaps database to design tracks. 
+OpenRouteService allows you to specify more than two waypoints and also to calculate precise turn indications even for dirt tracks.
 
 When you finish to plan your trip on the map, just click the bookmarklet to download a zip file containing three files:
 - file.tinfo    (contains turn indications info)
