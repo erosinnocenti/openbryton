@@ -1,5 +1,5 @@
 ## OpenBryton
-**OpenBryton** is a combination of a browser bookmarlet and a PHP server script for generating routes in Bryton Rider format.
+**OpenBryton** is a combination of a browser bookmarklet and a PHP server script for generating routes in Bryton Rider format.
 Currently OpenBryton is being tested only against Bryton Rider R530, which is my GPS unit.
 
 I decided to build this software because the only way to create a route complete of turn-by-turn notifications is to use Bryton Mobile App (https://play.google.com/store/apps/details?id=com.brytonsport.barringer&hl=it)
