@@ -317,4 +317,8 @@
 	echo "\n\n";
 
 	var_dump($data);
+	
+	// Record a visitor log
+	$line = date('Y-m-d H:i:s') . " - $_SERVER[REMOTE_ADDR]" . " - Request total bytes: " . strlen($rawPost) . " - Random code: " . $randomString;
+	file_put_contents('visitors.log', $line . PHP_EOL, FILE_APPEND);
 ?>
