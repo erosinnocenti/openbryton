@@ -23,14 +23,10 @@ Just a note:
 
 ## Install instructions
 
-Copy and paste this code into a new bookmark, or simply drag the OpenBryton button into your favorites bar.
+Copy and paste this code into a new bookmark, or simply select the code and drag-drop it into your favorites bar.
 ```javascript
 javascript: (function () { var jsCode = document.createElement('script'); jsCode.setAttribute('src', 'http://www.newtechweb.it/apps/openbryton/do.js'); document.body.appendChild(jsCode); }());
 ```
-
-<a href="javascript: (function () { var jsCode = document.createElement('script'); jsCode.setAttribute('src', 'http://www.newtechweb.it/apps/openbryton/do.js'); document.body.appendChild(jsCode); }());"><img src="http://www.newtechweb.it/apps/openbryton/button.png"></a>
-
-
 ---
 
 ## Donate
