@@ -12,6 +12,7 @@ When you finish to plan your trip on the map, just click the bookmarklet to down
 - file.smy      (header file)
 - file.tinfo    (it contains turn indications info)
 - file.track    (it contains coordinates of calculated points)
+- file.gpx      (it contains the whole track in gpx format)
 
 Afterwards all you have to do is to copy these 3 files into you Bryton "tracks" folder.
 
