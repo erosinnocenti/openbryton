@@ -8,14 +8,14 @@ Unfortunately, with Bryton official App you can only plan trips specifying two p
 With OpenBryton bookmarklet you can use the powerful OpenRouteService (http://openrouteservice.org) that lies on OpenStreetMaps database to design tracks. 
 OpenRouteService allows you to specify more than two waypoints and also to calculate precise turn indications even for mountain dirt roads.
 
-When you finish to plan your trip on the map, just click the bookmarklet to download a zip file containing three files:
+When you finish to plan your trip on the map, just click the bookmarklet to download a zip file containing 5 files:
 - file.smy      (header file)
 - file.tinfo    (it contains turn indications info)
 - file.track    (it contains coordinates of calculated points)
 - file.gpx      (it contains the whole track in gpx format)
 - file.kml      (it contains the whole track in kml format)
 
-Afterwards all you have to do is to copy these 3 files into you Bryton "tracks" folder.
+Afterwards all you have to do is to copy Bryton format files (.smy, .tinfo, .track) into you Bryton "tracks" folder.
 
 ---
 
