@@ -145,6 +145,30 @@
 
 	$data['CoordinatesCount'] = count($data['RoutePoints']);
 
+	// GPX file creation
+		if (file_exists($gpxFile))
+			unlink($gpxFile);
+
+		$gpx = '<?xml version="1.0"?>' . "\n";
+		$gpx = $gpx . '<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="https://github.com/erosinnocenti/openbryton">' . "\n";
+		$gpx = $gpx . '<trk>' . "\n";
+		$gpx = $gpx . '<name></name>' . "\n";
+		$gpx = $gpx . '<desc></desc>' . "\n";
+		$gpx = $gpx . '<trkseg>' . "\n";
+
+		foreach ($data['RoutePoints'] as $point) {
+	    	$lat = $point['lat'];
+			$lon = $point['lon'];
+	    	
+	    	$gpx = $gpx . '<trkpt lat="' . $lat . '" lon="' . $lon . '"/>' . "\n";
+		}
+
+		$gpx = $gpx . '</trkseg>' . "\n";
+		$gpx = $gpx . '</trk>' . "\n";
+		$gpx = $gpx . '</gpx>';
+
+		file_put_contents($gpxFile, $gpx);
+
 	// SMY file creation (header)
 		if (file_exists($smyFile))
 			unlink($smyFile);
@@ -283,6 +307,7 @@
 	$zip = new ZipArchive();
 	if($zip->open($zipFile, ZIPARCHIVE::OVERWRITE) === true) {
 		$zip->addFile($smyFile, $smyFile);
+		$zip->addFile($gpxFile, $gpxFile);
 		$zip->addFile($trackFile, $trackFile);
 		$zip->addFile($tinfoFile, $tinfoFile);
 		$zip->close();
@@ -294,6 +319,9 @@
 	if (file_exists($smyFile))
 		unlink($smyFile);
 		
+	if (file_exists($gpxFile))
+		unlink($gpxFile);
+	
 	if (file_exists($trackFile))
 		unlink($trackFile);
 
