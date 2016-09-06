@@ -13,6 +13,7 @@ When you finish to plan your trip on the map, just click the bookmarklet to down
 - file.tinfo    (it contains turn indications info)
 - file.track    (it contains coordinates of calculated points)
 - file.gpx      (it contains the whole track in gpx format)
+- file.kml      (it contains the whole track in kml format)
 
 Afterwards all you have to do is to copy these 3 files into you Bryton "tracks" folder.
 
