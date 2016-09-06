@@ -15,9 +15,6 @@ When you finish to plan your trip on the map, just click the bookmarklet to down
 
 Afterwards all you have to do is to copy these 3 files into you Bryton "tracks" folder.
 
-Just a note:
-- In OpenRouteService make sure to select pedestrian routing
-
 ---
 
 ## Install procedure
