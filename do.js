@@ -25,7 +25,34 @@ function() {
 	result += '<xls:Request methodName="RouteRequest" version="1.1" requestID="00" maximumResponses="15">';
 	result += '<xls:DetermineRouteRequest distanceUnit="M">';
 	result += '<xls:RoutePlan>';
-	result += '<xls:RoutePreference>Pedestrian</xls:RoutePreference>';
+	result += '<xls:RoutePreference>';
+
+	// Get routing preference
+	var routepref;
+	var buttonPreferenceList = document.getElementsByClassName('ORS-routeOptionsButton');
+	for (var i = 0; i < buttonPreferenceList.length; i++) {
+		for (var k = 0; k < buttonPreferenceList[i].classList.length; k++) {
+			if(buttonPreferenceList[i].classList[k] == 'active') {
+				var foundPref = buttonPreferenceList[i].getAttribute('id');
+				if(foundPref == 'pedestrian')
+					routepref = 'Pedestrian';
+				else if(foundPref == 'bicycle')
+					routepref = 'Bicycle';
+				else if(foundPref == 'heavyvehicle')
+					routepref = 'HeavyVehicle';
+				else if(foundPref == 'wheelchair')
+					routepref = 'Wheelchair';
+				else
+					routepref = 'Car';
+				
+				break;
+			}
+		}
+	}
+	
+	result += routepref;
+			
+	result += '</xls:RoutePreference>';
 	result += '<xls:ExtendedRoutePreference>';
 	result += '<xls:WeightingMethod>Fastest</xls:WeightingMethod>';
 	result += '</xls:ExtendedRoutePreference>';
