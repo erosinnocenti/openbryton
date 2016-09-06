@@ -28,6 +28,8 @@
 	$tinfoFile = $randomString . '-data.tinfo';
 	$trackFile = $randomString . '-data.track';
 	$smyFile = $randomString . '-data.smy';
+	$gpxFile = $randomString . '-data.gpx';
+	$kmlFile = $randomString . '-data.kml';
 	$zipFile = $randomString . '-data.zip';
 
 	foreach(preg_split('/((\r?\n)|(\r\n?))/', $rawPost) as $line) {
@@ -144,6 +146,61 @@
 	}
 
 	$data['CoordinatesCount'] = count($data['RoutePoints']);
+
+	// KML file creation
+		if (file_exists($kmlFile))
+			unlink($kmlFile);
+
+		$kml = '<?xml version="1.0" standalone="yes"?>' . "\n";
+		$kml = $kml . '<kml xmlns="http://www.opengis.net/kml/2.2">' . "\n";
+		$kml = $kml . '<Document>' . "\n";
+		$kml = $kml . '<name><![CDATA[' . $randomString . '-data]]></name>' . "\n";
+		$kml = $kml . '<visibility>1</visibility>' . "\n";
+		$kml = $kml . '<open>1</open>' . "\n";
+		$kml = $kml . '<Snippet><![CDATA[created using <a href="https://github.com/erosinnocenti/openbryton">OpenBryton</a>]]></Snippet>' . "\n";
+		$kml = $kml . '<Style id="gv_track">' . "\n";
+		$kml = $kml . '<LineStyle>' . "\n";
+		$kml = $kml . '<color>ff0000e6</color>' . "\n";
+		$kml = $kml . '<width>4</width>' . "\n";
+		$kml = $kml . '</LineStyle>' . "\n";
+		$kml = $kml . '</Style>' . "\n";
+		$kml = $kml . '<Folder id="Tracks">' . "\n";
+		$kml = $kml . '<name>Tracks</name>' . "\n";
+		$kml = $kml . '<visibility>1</visibility>' . "\n";
+		$kml = $kml . '<open>0</open>' . "\n";
+		$kml = $kml . '<Placemark>' . "\n";
+		$kml = $kml . '<name><![CDATA[' . $randomString . '-data]]></name>' . "\n";
+		$kml = $kml . '<Snippet></Snippet>' . "\n";
+		$kml = $kml . '<description><![CDATA[&nbsp;]]></description>' . "\n";
+		$kml = $kml . '<styleUrl>#gv_track</styleUrl>' . "\n";
+		$kml = $kml . '<Style>' . "\n";
+		$kml = $kml . '<LineStyle>' . "\n";
+		$kml = $kml . '<color>ff0000e6</color>' . "\n";
+		$kml = $kml . '<width>4</width>' . "\n";
+		$kml = $kml . '</LineStyle>' . "\n";
+		$kml = $kml . '</Style>' . "\n";
+		$kml = $kml . '<MultiGeometry>' . "\n";
+		$kml = $kml . '<LineString>' . "\n";
+		$kml = $kml . '<tessellate>1</tessellate>' . "\n";
+		$kml = $kml . '<altitudeMode>clampToGround</altitudeMode>' . "\n";
+		$kml = $kml . '<coordinates>' . "\n";
+
+		foreach ($data['RoutePoints'] as $point) {
+	    	$lat = $point['lat'];
+			$lon = $point['lon'];
+	    	
+	    	$kml = $kml . $lon . ',' . $lat . ' ';
+		}
+
+		$kml = $kml . '</coordinates>' . "\n";
+		$kml = $kml . '</LineString>' . "\n";
+		$kml = $kml . '</MultiGeometry>' . "\n";
+		$kml = $kml . '</Placemark>' . "\n";
+		$kml = $kml . '</Folder>' . "\n";
+		$kml = $kml . '</Document>' . "\n";
+		$kml = $kml . '</kml>';
+
+		file_put_contents($kmlFile, $kml);
 
 	// GPX file creation
 		if (file_exists($gpxFile))
@@ -308,6 +365,7 @@
 	if($zip->open($zipFile, ZIPARCHIVE::OVERWRITE) === true) {
 		$zip->addFile($smyFile, $smyFile);
 		$zip->addFile($gpxFile, $gpxFile);
+		$zip->addFile($kmlFile, $kmlFile);
 		$zip->addFile($trackFile, $trackFile);
 		$zip->addFile($tinfoFile, $tinfoFile);
 		$zip->close();
@@ -318,9 +376,12 @@
 		
 	if (file_exists($smyFile))
 		unlink($smyFile);
-		
+	
 	if (file_exists($gpxFile))
 		unlink($gpxFile);
+	
+	if (file_exists($kmlFile))
+		unlink($kmlFile);
 	
 	if (file_exists($trackFile))
 		unlink($trackFile);
@@ -345,7 +406,7 @@
 	echo "\n\n";
 
 	var_dump($data);
-	
+
 	// Record a visitor log
 	$line = date('Y-m-d H:i:s') . " - $_SERVER[REMOTE_ADDR]" . " - Request total bytes: " . strlen($rawPost) . " - Random code: " . $randomString;
 	file_put_contents('visitors.log', $line . PHP_EOL, FILE_APPEND);
